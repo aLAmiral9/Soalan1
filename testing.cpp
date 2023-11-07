@@ -1,152 +1,104 @@
 #include <iostream>
 using namespace std;
 
-int main() {
+int main(){
   
   int soal;
-  
-  cout << "pilih jawaban soal 1 - 5 => ";
+  cout << "Jawaban nomor => ";
   cin >> soal;
+  cout << endl;
+  // soal nomor 1
+  if(soal == 1){
+  char c;
+  do{
+  int x, y;
+  cout << "Masukan Bilangan => ";
+  cin >> x;
+  cout << "Masukam bilanham => ";
+  cin >> y;
   
-  while(soal){
-    if(soal == 1){
+  int x9 = max({x, y});
+  
+  cout << "Bilangan terbesar => " << x9 << endl;
+  cout << endl;
+  cout << "ulangi(y / n) => ";
+  cin >> c;
+  system("clear");
+  if(c == 'n'){
+    cout << endl;
+    cout << "Program selesai!!" << endl;
+  }
+  }while(c == 'y');
+}
+  // soal nomor 2
+  if(soal == 2){
+  int n;
+  cout << "Masukan bilangan positif => ";
+  cin >> n;
+  
+  int faktorial = 1;
+  for(int x = 1; x <= n; x++){
+    faktorial *= x;
+  }
+ cout << n << "! => " << faktorial << endl;
+  }
+   // soal nomor 3
+   if(soal == 3){
+   string kata;
+  
+  cout << "Masukan kata => ";
+  cin >> kata;
+  cout << endl;
+   
+   reverse(kata.begin(), kata.end());
+   
+  cout << kata << endl;
+}
+// soal nomor 4
+    if(soal == 4){
     int n;
-    bool isPrime = true;
-
-    cout << "Masukkan bilangan bulat positif: ";
+    cout << "Masukkan jumlah angka dalam deret Fibonacci: ";
     cin >> n;
 
-    if (n <= 1) {
-        isPrime = false;
+    int a = 0, b = 1; // Inisialisasi dua angka pertama
+    cout << "Deret Fibonacci: ";
+
+    if (n >= 1) {
+        cout << a << " ";
+    }
+    if (n >= 2) {
+        cout << b << " ";
+    }
+
+    for (int i = 2; i < n; i++) {
+        int next = a + b;
+        cout << next << " ";
+        a = b;
+        b = next;
+    }
+    cout << endl;
+    }
+  // soal no 5 
+  if(soal == 5){
+  double berat, tinggi;
+    cout << "Masukkan berat badan (kg): ";
+    cin >> berat;
+    cout << "Masukkan tinggi (m): ";
+    cin >> tinggi;
+
+    double bmi = berat / (tinggi * tinggi);
+
+    cout << "BMI Anda: " << bmi << endl;
+
+    if (bmi < 18.5) {
+        cout << "Kurus" << endl;
+    } else if (bmi < 24.9) {
+        cout << "Normal" << endl;
+    } else if (bmi < 29.9) {
+        cout << "Gemuk" << endl;
     } else {
-        for (int i = 2; i * i <= n; ++i) {
-            if (n % i == 0) {
-                isPrime = false;
-                break;
-            }
-        }
+        cout << "Obesitas" << endl;
     }
-
-    if (isPrime) {
-        cout << n << " adalah bilangan prima." << endl;
-    } else {
-        cout << n << " bukan bilangan prima." << endl;
-    }
-    break;
-    } 
-    if(soal == 2){
-      
-      double x, y;
-      char c;
-      
-      cout << "Masukan angka pertama => ";
-      cin >> x;
-      cout << "Masukan operator => ";
-      cin >> c;
-      cout << "Masukan angka kedua => ";
-      cin >> y;
-      
-      if(c == '+'){
-        cout << x << " " << c << " " << y << " = " << x + y << endl; 
-      }else if(c == '*'){
-        cout << x << " " << c << " " << y << " = " << x * y << endl;
-      }else if(c == '-'){
-        cout << x << " " << c << " " << y << " = " << x - y << endl;
-      }else if(c == '/'){
-        cout << x << " " << c << " " << y << " = " << x / y << endl;
-      }else{
-        cout << "Operator tidak valid" << endl;
-      }
-      break;
-    }
-      if(soal == 3){
-        
-        int temperature, convertedTemperature;
-        char choice;
-        
-        cout << "Pilih jenis konversi suhu (°C / °F) / (°F / °C) ";
-        cin >> temperature;
-        
-        if(choice == 'C' || choice == 'c'){
-          cout << "Masukan suhu °C => ";
-          cin >> temperature;
-          convertedTemperature = (temperature * 9/5) + 32;
-          cout << "°C convert to °F => " << convertedTemperature << endl;
-        }else if(choice == 'F' || choice == 'f'){
-          cout << "Masukan suhu °F => ";
-          cin >> temperature;
-          convertedTemperature = (temperature - 32) * 9/5;
-          cout << "°F convert to °C => " << convertedTemperature << endl;
-        }else{
-          cout << "Pilihan konversi tidak valid, Silahkam pilih °C / °F" << endl;
-        }
-        break;
-      }
-        if(soal == 4){
-          double luas,keliling;
-          const double phi = 3.14159;
-          int r;
-          
-          cout << "Masukan jari-jari => ";
-          cin >> r;
-          
-          luas = phi * (r*r);
-          keliling = 2 * phi * r;
-          
-          cout << "Hasil luas => " << luas << endl;
-          cout << "Hasil keliling => " << keliling << endl;
-          break;
-        }
-        if(soal == 5){
-    vector<string> shoppingList;
-
-    while (true) {
-        cout << "Daftar Belanja:" << endl;
-        for (int i = 0; i < shoppingList.size(); i++) {
-            cout << i + 1 << ". " << shoppingList[i] << endl;
-        }
-
-        cout << "\nPilihan:" << endl;
-        cout << "1. Tambahkan item" << endl;
-        cout << "2. Hapus item" << endl;
-        cout << "3. Keluar" << endl;
-
-        int choice;
-        cin >> choice;
-
-        if (choice == 1) {
-            string item;
-            cout << "Masukkan nama item yang ingin ditambahkan: ";
-            cin >> item;
-            shoppingList.push_back(item);
-            cout << "'" << item << "' telah ditambahkan ke daftar belanja.\n";
-        } else if (choice == 2) {
-            if (shoppingList.empty()) {
-                cout << "Daftar belanja kosong. Tidak ada item yang dapat dihapus.\n";
-            } else {
-                int itemNumber;
-                cout << "Masukkan nomor item yang ingin dihapus: ";
-                cin >> itemNumber;
-                if (itemNumber >= 1 && itemNumber <= shoppingList.size()) {
-                    cout << "'" << shoppingList[itemNumber - 1] << "' telah dihapus dari daftar belanja.\n";
-                    shoppingList.erase(shoppingList.begin() + itemNumber - 1);
-                } else {
-                    cout << "Nomor item tidak valid.\n";
-                }
-            }
-        } else if (choice == 3) {
-            cout << "Terima kasih! Daftar belanja:" << endl;
-            for (int i = 0; i < shoppingList.size(); i++) {
-                cout << i + 1 << ". " << shoppingList[i] << endl;
-            }
-            break;
-        } else {
-            cout << "Pilihan tidak valid. Silakan pilih 1, 2, atau 3.\n";
-        }
-    }
-    break;
-        }
-      }
-
-    return 0;
+  }
+  return 0;
 }
